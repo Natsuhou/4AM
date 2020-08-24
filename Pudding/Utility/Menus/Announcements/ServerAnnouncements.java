@@ -14,7 +14,7 @@ public class ServerAnnouncements {
         }
         public EmbedBuilder welcomeMenu() {
             return embedBuilder
-                    .setTitle("ServerAnnouncements to the PuddingPermissions Server!")
+                    .setTitle("ServerAnnouncements to the PuddingRanks Server!")
                     .setDescription("This server is currently in development/testing phase but we hope you stick around anyway!")
                     .addField("\uD83D\uDD51 New Updates", "• We'll be adding new mechanics which will be posted in the changelog channel", false)
                     .addField("\uD83C\uDF89 Limited edition tag", "• All new members will be given a limited original pudding tag", false)

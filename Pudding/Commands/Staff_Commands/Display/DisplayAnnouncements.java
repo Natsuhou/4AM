@@ -2,7 +2,7 @@ package Pudding.Commands.Staff_Commands.Display;
 
 import Pudding.Utility.Menus.Announcements.ServerAnnouncements;
 import Pudding.Utility.Permissions.Pudding;
-import Pudding.Utility.Permissions.PuddingPermissions;
+import Pudding.Utility.Enums.PuddingRanks;
 import com.jagrosh.jdautilities.command.Command;
 import com.jagrosh.jdautilities.command.CommandEvent;
 
@@ -19,7 +19,7 @@ public class DisplayAnnouncements extends Command {
             ServerAnnouncements announcementsMenu = new ServerAnnouncements();
             e.reply(announcementsMenu.welcomeMenu().build());
         } else {
-            e.reply(user.notEnoughPermissions(PuddingPermissions.ADMIN).build());
+            e.reply(user.notEnoughPermissions(PuddingRanks.ADMIN).build());
         }
     }
 }

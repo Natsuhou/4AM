@@ -1,5 +1,6 @@
 package Pudding.Utility.Permissions;
 
+import Pudding.Utility.Enums.PuddingRanks;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.Member;
 import net.dv8tion.jda.api.entities.Role;
@@ -8,21 +9,16 @@ import java.awt.*;
 
 public class Pudding {
     private final Member member;
-    private final EmbedBuilder embedBuilder;
 
     public Pudding(Member m) {
         member = m;
-        embedBuilder = new EmbedBuilder()
-                .setColor(new Color(255, 100, 84))
-                .setTitle("Invalid permissions!")
-                .setFooter("If you believe this is an error, contact staff!", "https://i.imgur.com/QDWW5Bq.png");
     }
     /********************************
         STAFF PERMISSION LEVELS
      ********************************/
     public boolean isFounder() {
         for (Role role : member.getRoles()) {
-            if (role.getId().equals(PuddingPermissions.FOUNDER.getRankId())) {
+            if (role.getId().equals(PuddingRanks.FOUNDER.getRankId())) {
                 return true;
             }
         }
@@ -30,7 +26,7 @@ public class Pudding {
     }
     public boolean isAdmin() {
         for (Role role : member.getRoles()) {
-            if (role.getId().equals(PuddingPermissions.ADMIN.getRankId())) {
+            if (role.getId().equals(PuddingRanks.ADMIN.getRankId())) {
                 return true;
             }
         }
@@ -38,7 +34,7 @@ public class Pudding {
     }
     public boolean isMod() {
         for (Role role : member.getRoles()) {
-            if (role.getId().equals(PuddingPermissions.MODERATOR.getRankId())) {
+            if (role.getId().equals(PuddingRanks.MODERATOR.getRankId())) {
                 return true;
             }
         }
@@ -46,7 +42,7 @@ public class Pudding {
     }
     public boolean isHelper() {
         for (Role role : member.getRoles()) {
-            if (role.getId().equals(PuddingPermissions.HELPER.getRankId())) {
+            if (role.getId().equals(PuddingRanks.HELPER.getRankId())) {
                 return true;
             }
         }
@@ -58,15 +54,27 @@ public class Pudding {
     /********************************
         MEMBER PERMISSION LEVELS
      ********************************/
-    public boolean member() {
+    public boolean isMember() {
         for (Role role : member.getRoles()) {
-            if (role.getId().equals(PuddingPermissions.MEMBER.getRankId())) {
+            if (role.getId().equals(PuddingRanks.MEMBER.getRankId())) {
                 return true;
             }
         }
         return false;
     }
-    public EmbedBuilder notEnoughPermissions(PuddingPermissions rank) {
+    public boolean isVerified() {
+        for (Role role : member.getRoles()) {
+            if (role.getId().equals(PuddingRanks.VERIFIED.getRankId()) || isStaff()) {
+                return true;
+            }
+        }
+        return false;
+    }
+    public EmbedBuilder notEnoughPermissions(PuddingRanks rank) {
+        EmbedBuilder embedBuilder = new EmbedBuilder()
+                .setColor(new Color(255, 100, 84))
+                .setTitle("Invalid permissions!")
+                .setFooter("If you believe this is an error, contact staff!", "https://i.imgur.com/QDWW5Bq.png");
         switch (rank) {
             case FOUNDER:
                 return embedBuilder.setDescription("Minimum required role: founder");

@@ -1,6 +1,6 @@
 package Pudding.Utility.Profiles;
 
-import Pudding.Accounts.PuddingProfiles;
+import Pudding.Utility.Enums.PuddingRanks;
 import Pudding.Utility.Permissions.Pudding;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.Member;
@@ -14,8 +14,7 @@ public class Profile {
     private final Member member;
     public Profile(Member m) {
         this.member = m;
-        embedBuilder = new EmbedBuilder()
-                .setThumbnail("https://i.imgur.com/2DMx6H9.png");
+        embedBuilder = new EmbedBuilder();
     }
     public EmbedBuilder getProfile() {
         EmbedBuilder profile = memberProfile();
@@ -23,31 +22,22 @@ public class Profile {
 
         if (!permissions.isStaff()) {
             for (Role role : member.getRoles()) {
-                switch (role.getId()) {
+                switch (PuddingRanks.getRank(role.getId())) {
                     /****************************************
                      *             Donor Roles              *
                      ****************************************/
-                    //PuddingPermissions
-                    case "3333":
-
+                    case PREMIUM_I:
                         break;
-                    //Premium
-                    case "12321333":
-
+                    case PREMIUM_II:
                         break;
-                    //Cafe
-                    case "1232133eee3":
-
+                    case PREMIUM_III:
+                        break;
+                    case PUDDING:
                         break;
                     /****************************************
                      *            Events Profiles           *
                      ****************************************/
                     //Crown role or top likes
-                    case "ttt":
-                        break;
-                        //Cafe
-                    case "ee":
-                        break;
                     default:
                         break;
 
@@ -65,19 +55,23 @@ public class Profile {
         String currency = Integer.toString(profiles.getPoints());
         String likes = Integer.toString(profiles.getLikes());
 
+
         //embedBuilder.getFields().get(3).getValue().replace();
         return embedBuilder
                 .setTitle(member.getUser().getName() + "'s Profile")
-                .setThumbnail(member.getUser().getAvatarUrl())
                 .setColor(new Color(255, 183, 138))
+                .setThumbnail(member.getUser().getAvatarUrl())
                 .setDescription(profiles.getDescription())
-                .addField("\uD83D\uDC96 Likes ", likes, true)
-                .addField("\uD83C\uDF6E PuddingPermissions ", currency, true)
-                .addField("✅ Verified", "Not verified", true)
+                .setAuthor("\uD83C\uDF6E Admin")
                 .addField("\uD83D\uDD14 DM status", "Ask", true)
-                .addField("\uD83C\uDF86 Join Date ", member.getUser().getTimeCreated().format(dtf), true)
+                .addField("\uD83D\uDC96 Likes", likes, true)
+                .addField("\uD83C\uDF6E Pudding", currency, true)
+                .addField("#️⃣ Age", "over 18", true)
+                .addField("✅ Verified", "test2", true)
+                .addField("\uD83D\uDC91 Dating Status", "Test", true)
+                .addField("\uD83D\uDD0E Searching For", "big tiddy goth gf", true)
+                .addField("\uD83C\uDF86 Join Date ", member.getTimeJoined().format(dtf), true)
                 .setFooter(member.getUser().getAsTag());
-
     }
     private EmbedBuilder premiumProfile() {
         return embedBuilder;

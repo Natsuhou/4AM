@@ -1,8 +1,8 @@
 package Pudding.Commands.Staff_Commands.Display;
 
 import Pudding.Utility.Menus.ChannelMenus.ReactMenus;
+import Pudding.Utility.Enums.PuddingRanks;
 import Pudding.Utility.Permissions.Pudding;
-import Pudding.Utility.Permissions.PuddingPermissions;
 import com.jagrosh.jdautilities.command.Command;
 import com.jagrosh.jdautilities.command.CommandEvent;
 
@@ -39,7 +39,7 @@ public class DisplayReactMenu extends Command {
                     break;
             }
         } else {
-            e.reply(user.notEnoughPermissions(PuddingPermissions.ADMIN).build());
+            e.reply(user.notEnoughPermissions(PuddingRanks.ADMIN).build());
         }
     }
 

@@ -1,5 +1,6 @@
 package Pudding.Commands.Member_Commands;
 
+import Pudding.Utility.Enums.PuddingChannels;
 import Pudding.Utility.Permissions.Pudding;
 import com.jagrosh.jdautilities.command.Command;
 import com.jagrosh.jdautilities.command.CommandEvent;
@@ -15,7 +16,6 @@ import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
 public class Verification extends Command {
-    private Member member;
     private final EventWaiter waiter;
 
     public Verification(EventWaiter w) {
@@ -26,9 +26,8 @@ public class Verification extends Command {
 
     @Override
     protected void execute(@NotNull CommandEvent e) {
-        member = e.getMember();
-
-        if (!isVerified()) {
+        Pudding pudding = new Pudding(e.getMember());
+        if (pudding.isVerified()) {
             e.getAuthor().openPrivateChannel().queue((privateChannel -> {
                 privateChannel.sendMessage(prompt().build()).queue();
             }));
@@ -37,7 +36,7 @@ public class Verification extends Command {
                     privateChannel.sendMessage(prompt2().build()).queue();
                 }));
                 Objects.requireNonNull(
-                        e.getGuild().getTextChannelById("723001448153219114"))
+                        e.getGuild().getTextChannelById(PuddingChannels.STAFF_QUEUE.getTextChannelId()))
                         .sendMessage(event1.getMessage()
                                 .getAttachments()
                                 .get(0)
@@ -48,7 +47,7 @@ public class Verification extends Command {
                         privateChannel.sendMessage(finalPrompt().build()).queue();
                     }));
                     Objects.requireNonNull(
-                            e.getGuild().getTextChannelById("723001448153219114"))
+                            e.getGuild().getTextChannelById(PuddingChannels.STAFF_QUEUE.getTextChannelId()))
                             .sendMessage(event2.getMessage()
                                     .getAttachments()
                                     .get(0)
@@ -63,20 +62,10 @@ public class Verification extends Command {
             e.getMember().getUser().openPrivateChannel().queue((privateChannel -> privateChannel.sendMessage(alreadyVerified().build()).queue()));
         }
     }
-    private boolean isVerified() {
-        Pudding user = new Pudding(member);
-        for (Role role : member.getRoles()) {
-            if (role.getId().equals("627606457030017026") || user.isStaff()) {
-                return true;
-            }
-        }
-        return false;
-    }
     private @NotNull EmbedBuilder prompt() {
         return new EmbedBuilder()
                 .setTitle("1. First image")
                 .setColor(new Color(255, 183, 138))
-                .setThumbnail("https://i.imgur.com/2DMx6H9.png")
                 .setDescription("Please send the first verification image (order doesn't matter)!")
                 .setFooter("Contact a staff member for further help!", "https://i.imgur.com/QDWW5Bq.png");
     }
@@ -84,7 +73,6 @@ public class Verification extends Command {
         return new EmbedBuilder()
                 .setTitle("2. Second image")
                 .setColor(new Color(255, 183, 138))
-                .setThumbnail("https://i.imgur.com/2DMx6H9.png")
                 .setDescription("Please send the second verification image!")
                 .setFooter("Contact a staff member for further help!", "https://i.imgur.com/QDWW5Bq.png");
     }
@@ -92,14 +80,12 @@ public class Verification extends Command {
         return new EmbedBuilder()
                 .setTitle("Verification completed!")
                 .setColor(new Color(163, 255, 138))
-                .setThumbnail("https://i.imgur.com/2DMx6H9.png")
                 .setDescription("You've sent all the required documents to verify! We'll update you later!")
                 .setFooter("Contact a staff member for further help!", "https://i.imgur.com/QDWW5Bq.png");
     }
     private @NotNull EmbedBuilder verifyCancelled() {
         return new EmbedBuilder()
                 .setColor(new Color(255, 138, 138))
-                .setThumbnail("https://i.imgur.com/2DMx6H9.png")
                 .setTitle("Member Verification Cancelled!")
                 .setDescription("Please type the verification command in the server again to redo verification!")
                 .setFooter("Contact a staff member for further help!", "https://i.imgur.com/QDWW5Bq.png");
@@ -107,7 +93,6 @@ public class Verification extends Command {
     private @NotNull EmbedBuilder alreadyVerified() {
         return new EmbedBuilder()
                 .setColor(new Color(255, 138, 138))
-                .setThumbnail("https://i.imgur.com/2DMx6H9.png")
                 .setTitle("Account Already Verified!")
                 .setDescription("You cannot verify your account as you've already been verified!")
                 .setFooter("Contact a staff member for further help!", "https://i.imgur.com/QDWW5Bq.png");
