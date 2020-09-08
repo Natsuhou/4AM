@@ -1,6 +1,6 @@
-package Pudding.Listeners;
+package pudding.listeners;
 
-import Pudding.Utility.Enums.PuddingChannels;
+import pudding.Utility.enums.PuddingTextChannels;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 
@@ -12,44 +12,26 @@ public class MessageReceived extends ListenerAdapter {
     public void onGuildMessageReceived(@Nonnull GuildMessageReceivedEvent e) {
         super.onGuildMessageReceived(e);
 
-        switch (Objects.requireNonNull(PuddingChannels.getChannel(e.getChannel().getId()))) {
-            case RULES:
+        if (PuddingTextChannels.getTextChannel(e.getChannel().getId()) != null) {
+            switch (Objects.requireNonNull(PuddingTextChannels.getTextChannel(e.getChannel().getId()))) {
+                case RULES:
 
-                break;
-            case VERIFY:
-                System.out.println("verify");
-                break;
-            case ROLES:
-                break;
-            case FEMALE_SELFIES:
-                break;
-            case NBNG_SELFIES:
-                break;
-            case MALE_SELFIES:
-                break;
-            case STAFF_QUEUE:
-                e.getMessage().addReaction("✔").queue();
-                break;
-            default:
-                break;
-        }
-
-
-        /*
-        if (e.getAuthor().isBot()) {
-            StringBuilder rawContent = new StringBuilder();
-            for (int i = 0; i < e.getMessage().getContentRaw().length(); i++) {
-                char bruh = e.getMessage().getContentRaw().charAt(i);
-                rawContent.append(bruh);
+                    break;
+                case VERIFY:
+                    break;
+                case ROLES:
+                    break;
+                case FEMALE_SELFIES:
+                    break;
+                case NBNG_SELFIES:
+                    break;
+                case MALE_SELFIES:
+                    break;
+                case STAFF_QUEUE:
+                    e.getMessage().addReaction("✔").queue();
+                    break;
             }
-            Message message = new MessageBuilder(rawContent).build();
-            if (message.getContentRaw().contains("bruh")) {
-                e.getChannel().sendMessage("bruh").queue();
-            }
-
-
         }
-         */
     }
 
 }

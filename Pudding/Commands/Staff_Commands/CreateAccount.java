@@ -1,7 +1,7 @@
-package Pudding.Commands.Staff_Commands;
+package pudding.commands.staff_commands;
 
-import Pudding.RandomShit.ErrorMenus;
-import Pudding.Utility.MongoAccounts.AccountHandling;
+import pudding.RandomShit.ErrorMenus;
+import pudding.Utility.mongo.AccountHandling;
 import com.jagrosh.jdautilities.command.Command;
 import com.jagrosh.jdautilities.command.CommandEvent;
 import net.dv8tion.jda.api.Permission;

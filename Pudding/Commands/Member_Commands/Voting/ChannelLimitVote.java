@@ -1,4 +1,4 @@
-package Pudding.Commands.Member_Commands.Voting;
+package pudding.commands.member_commands.Voting;
 
 import com.jagrosh.jdautilities.command.Command;
 import com.jagrosh.jdautilities.command.CommandEvent;

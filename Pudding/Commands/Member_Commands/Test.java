@@ -1,8 +1,8 @@
-package Pudding.Commands.Member_Commands;
+package pudding.commands.member_commands;
 
-import Pudding.Utility.Enums.PuddingRanks;
 import com.jagrosh.jdautilities.command.Command;
 import com.jagrosh.jdautilities.command.CommandEvent;
+import pudding.Utility.permissions.Pudding;
 
 public class Test extends Command {
     public Test() {
@@ -11,6 +11,11 @@ public class Test extends Command {
 
     @Override
     protected void execute(CommandEvent e) {
-        System.out.println(PuddingRanks.ADMIN);
+        Pudding pudding = new Pudding(e.getMember());
+        if (pudding.isStaff()) {
+            e.reply("you are gay");
+        } else {
+            e.reply("you are cringe");
+        }
     }
 }

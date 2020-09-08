@@ -1,8 +1,8 @@
-package Pudding.Commands.Staff_Commands.Display;
+package pudding.commands.staff_commands.Display;
 
-import Pudding.Utility.Menus.Announcements.ServerAnnouncements;
-import Pudding.Utility.Permissions.Pudding;
-import Pudding.Utility.Enums.PuddingRanks;
+import pudding.Utility.enums.PuddingRoles;
+import pudding.Utility.menus.Announcements.ServerAnnouncements;
+import pudding.Utility.permissions.Pudding;
 import com.jagrosh.jdautilities.command.Command;
 import com.jagrosh.jdautilities.command.CommandEvent;
 
@@ -19,7 +19,7 @@ public class DisplayAnnouncements extends Command {
             ServerAnnouncements announcementsMenu = new ServerAnnouncements();
             e.reply(announcementsMenu.welcomeMenu().build());
         } else {
-            e.reply(user.notEnoughPermissions(PuddingRanks.ADMIN).build());
+            e.reply(user.notEnoughPermissions(PuddingRoles.ADMIN).build());
         }
     }
 }

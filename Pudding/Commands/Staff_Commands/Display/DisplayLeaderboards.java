@@ -1,7 +1,7 @@
-package Pudding.Commands.Staff_Commands.Display;
+package pudding.commands.staff_commands.Display;
 
-import Pudding.Utility.Permissions.Pudding;
-import Pudding.Utility.Enums.PuddingRanks;
+import pudding.Utility.permissions.Pudding;
+import pudding.Utility.enums.PuddingRoles;
 import com.jagrosh.jdautilities.command.Command;
 import com.jagrosh.jdautilities.command.CommandEvent;
 import net.dv8tion.jda.api.EmbedBuilder;
@@ -18,7 +18,7 @@ public class DisplayLeaderboards extends Command {
         if (permissions.isStaff()) {
             e.reply(leaderBoard().build());
         } else {
-            e.reply(permissions.notEnoughPermissions(PuddingRanks.ADMIN).build());
+            e.reply(permissions.notEnoughPermissions(PuddingRoles.ADMIN).build());
         }
     }
     private EmbedBuilder leaderBoard() {

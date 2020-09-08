@@ -1,4 +1,4 @@
-package Pudding.Utility.Interfaces;
+package pudding.Utility.Interfaces;
 
 public interface Accounts {
     boolean hasAccount();

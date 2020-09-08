@@ -1,4 +1,4 @@
-package Pudding.Commands.Member_Commands;
+package pudding.commands.member_commands;
 
 import com.jagrosh.jdautilities.command.Command;
 import com.jagrosh.jdautilities.command.CommandEvent;

@@ -1,4 +1,4 @@
-package Pudding.Utility.Menus;
+package pudding.Utility.menus;
 
 import net.dv8tion.jda.api.EmbedBuilder;
 

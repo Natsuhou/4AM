@@ -1,4 +1,4 @@
-package Pudding.Handle;
+package pudding.Handle;
 
 import net.dv8tion.jda.api.entities.Guild;
 import net.dv8tion.jda.api.entities.Member;

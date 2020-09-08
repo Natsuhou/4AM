@@ -1,13 +1,14 @@
-package Pudding.Utility.Profiles;
+package pudding.Utility.profiles;
 
-import Pudding.Utility.Enums.PuddingRanks;
-import Pudding.Utility.Permissions.Pudding;
+import pudding.Utility.enums.PuddingRoles;
+import pudding.Utility.permissions.Pudding;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.Member;
 import net.dv8tion.jda.api.entities.Role;
 
 import java.awt.*;
 import java.time.format.DateTimeFormatter;
+import java.util.Objects;
 
 public class Profile {
     private final EmbedBuilder embedBuilder;
@@ -22,7 +23,7 @@ public class Profile {
 
         if (!permissions.isStaff()) {
             for (Role role : member.getRoles()) {
-                switch (PuddingRanks.getRank(role.getId())) {
+                switch (Objects.requireNonNull(PuddingRoles.getRank(role.getId()))) {
                     /****************************************
                      *             Donor Roles              *
                      ****************************************/

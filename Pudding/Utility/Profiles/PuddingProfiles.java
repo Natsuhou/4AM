@@ -1,7 +1,7 @@
-package Pudding.Utility.Profiles;
+package pudding.Utility.profiles;
 
-import Pudding.Utility.MongoAccounts.AccountHandling;
-import Pudding.Utility.MongoAccounts.MongoManager;
+import pudding.Utility.mongo.AccountHandling;
+import pudding.Utility.mongo.MongoManager;
 import com.mongodb.BasicDBObject;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.model.Projections;

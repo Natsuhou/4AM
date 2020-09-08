@@ -1,7 +1,7 @@
-package Pudding.Commands.Member_Commands.Profile;
+package pudding.commands.member_commands.Profile;
 
-import Pudding.Utility.Profiles.Profile;
-import Pudding.Utility.MongoAccounts.AccountHandling;
+import pudding.Utility.profiles.Profile;
+import pudding.Utility.mongo.AccountHandling;
 import com.jagrosh.jdautilities.command.Command;
 import com.jagrosh.jdautilities.command.CommandEvent;
 import net.dv8tion.jda.api.EmbedBuilder;

@@ -1,13 +1,11 @@
-package Pudding.Commands.Member_Commands;
+package pudding.commands.member_commands;
 
-import Pudding.Utility.Enums.PuddingChannels;
-import Pudding.Utility.Permissions.Pudding;
+import pudding.Utility.enums.PuddingTextChannels;
+import pudding.Utility.permissions.Pudding;
 import com.jagrosh.jdautilities.command.Command;
 import com.jagrosh.jdautilities.command.CommandEvent;
 import com.jagrosh.jdautilities.commons.waiter.EventWaiter;
 import net.dv8tion.jda.api.EmbedBuilder;
-import net.dv8tion.jda.api.entities.Member;
-import net.dv8tion.jda.api.entities.Role;
 import net.dv8tion.jda.api.events.message.priv.PrivateMessageReceivedEvent;
 import org.jetbrains.annotations.NotNull;
 
@@ -36,7 +34,7 @@ public class Verification extends Command {
                     privateChannel.sendMessage(prompt2().build()).queue();
                 }));
                 Objects.requireNonNull(
-                        e.getGuild().getTextChannelById(PuddingChannels.STAFF_QUEUE.getTextChannelId()))
+                        e.getGuild().getTextChannelById(PuddingTextChannels.STAFF_QUEUE.getTextChannelId()))
                         .sendMessage(event1.getMessage()
                                 .getAttachments()
                                 .get(0)
@@ -47,7 +45,7 @@ public class Verification extends Command {
                         privateChannel.sendMessage(finalPrompt().build()).queue();
                     }));
                     Objects.requireNonNull(
-                            e.getGuild().getTextChannelById(PuddingChannels.STAFF_QUEUE.getTextChannelId()))
+                            e.getGuild().getTextChannelById(PuddingTextChannels.STAFF_QUEUE.getTextChannelId()))
                             .sendMessage(event2.getMessage()
                                     .getAttachments()
                                     .get(0)
@@ -78,7 +76,7 @@ public class Verification extends Command {
     }
     private @NotNull EmbedBuilder finalPrompt() {
         return new EmbedBuilder()
-                .setTitle("Verification completed!")
+                .setTitle("✔ Verification completed!")
                 .setColor(new Color(163, 255, 138))
                 .setDescription("You've sent all the required documents to verify! We'll update you later!")
                 .setFooter("Contact a staff member for further help!", "https://i.imgur.com/QDWW5Bq.png");
@@ -86,7 +84,7 @@ public class Verification extends Command {
     private @NotNull EmbedBuilder verifyCancelled() {
         return new EmbedBuilder()
                 .setColor(new Color(255, 138, 138))
-                .setTitle("Member Verification Cancelled!")
+                .setTitle("❌ Member Verification Cancelled!")
                 .setDescription("Please type the verification command in the server again to redo verification!")
                 .setFooter("Contact a staff member for further help!", "https://i.imgur.com/QDWW5Bq.png");
     }

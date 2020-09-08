@@ -1,8 +1,8 @@
-package Pudding.Commands.Staff_Commands.Display;
+package pudding.commands.staff_commands.Display;
 
-import Pudding.Utility.Menus.ChannelMenus.ReactMenus;
-import Pudding.Utility.Enums.PuddingRanks;
-import Pudding.Utility.Permissions.Pudding;
+import pudding.Utility.menus.ChannelMenus.RoleMenus;
+import pudding.Utility.enums.PuddingRoles;
+import pudding.Utility.permissions.Pudding;
 import com.jagrosh.jdautilities.command.Command;
 import com.jagrosh.jdautilities.command.CommandEvent;
 
@@ -18,7 +18,7 @@ public class DisplayReactMenu extends Command {
             switch (e.getArgs()) {
                 //Age Menu
                 case "am":
-                    ReactMenus reactMenu = new ReactMenus();
+                    RoleMenus reactMenu = new RoleMenus();
                     e.getChannel().sendMessage(reactMenu.ageMenu().build()).queue((message -> {
                         message.addReaction("\uD83D\uDD50").queue();
                         message.addReaction("\uD83D\uDD51").queue();
@@ -28,18 +28,17 @@ public class DisplayReactMenu extends Command {
                     }));
                     break;
                 case "dm":
-                    ReactMenus reactMenu1 = new ReactMenus();
+                    RoleMenus reactMenu1 = new RoleMenus();
                     e.getChannel().sendMessage(reactMenu1.dmStatusMenu().build()).queue((message -> {
 
                     }));
                     break;
                 case "lm":
-                    ReactMenus reactMenu2 = new ReactMenus();
-                    e.reply(reactMenu2.locationMenu().build());
+                    RoleMenus reactMenu2 = new RoleMenus();
                     break;
             }
         } else {
-            e.reply(user.notEnoughPermissions(PuddingRanks.ADMIN).build());
+            e.reply(user.notEnoughPermissions(PuddingRoles.ADMIN).build());
         }
     }
 

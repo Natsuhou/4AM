@@ -1,7 +1,7 @@
-package Pudding.Commands.Member_Commands.Profile;
+package pudding.commands.member_commands.Profile;
 
-import Pudding.Utility.Profiles.Profile;
-import Pudding.Utility.Profiles.PuddingProfiles;
+import pudding.Utility.profiles.Profile;
+import pudding.Utility.profiles.PuddingProfiles;
 import com.jagrosh.jdautilities.command.Command;
 import com.jagrosh.jdautilities.command.CommandEvent;
 

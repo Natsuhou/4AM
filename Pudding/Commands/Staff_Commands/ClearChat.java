@@ -1,7 +1,7 @@
-package Pudding.Commands.Staff_Commands;
+package pudding.commands.staff_commands;
 
-import Pudding.Utility.Enums.PuddingRanks;
-import Pudding.Utility.Permissions.Pudding;
+import pudding.Utility.enums.PuddingRoles;
+import pudding.Utility.permissions.Pudding;
 import com.jagrosh.jdautilities.command.Command;
 import com.jagrosh.jdautilities.command.CommandEvent;
 import net.dv8tion.jda.api.entities.Message;
@@ -28,7 +28,7 @@ public class ClearChat extends Command {
                 e.reply("No specified args");
             }
         } else {
-            e.reply(permissions.notEnoughPermissions(PuddingRanks.HELPER).build());
+            e.reply(permissions.notEnoughPermissions(PuddingRoles.HELPER).build());
         }
     }
 }

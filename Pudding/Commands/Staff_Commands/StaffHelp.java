@@ -1,7 +1,7 @@
-package Pudding.Commands.Staff_Commands;
+package pudding.commands.staff_commands;
 
-import Pudding.Utility.Enums.PuddingRanks;
-import Pudding.Utility.Permissions.Pudding;
+import pudding.Utility.enums.PuddingRoles;
+import pudding.Utility.permissions.Pudding;
 import com.jagrosh.jdautilities.command.Command;
 import com.jagrosh.jdautilities.command.CommandEvent;
 
@@ -16,7 +16,7 @@ public class StaffHelp extends Command {
         if (user.isStaff()) {
 
         } else {
-            e.reply(user.notEnoughPermissions(PuddingRanks.HELPER).build());
+            e.reply(user.notEnoughPermissions(PuddingRoles.HELPER).build());
         }
     }
 }
